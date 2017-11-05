@@ -3,14 +3,18 @@
 // This file will be compiled into app.js and will not be minified.
 // Feel free with using ES6 here.
 
-import DE from './modules/dots';
+import dropdown from './modules/drop-down.js';
+import navopener from './modules/nav-opener.js';
+import carousel from './modules/carousel.js';
 
-( ($) => {
-  'use strict';
+(($) => {
+    'use strict';
 
-  // When DOM is ready
-  $(() => {
-    DE.dotsEffect();
-  });
+    // When DOM is ready
+    $(() => {
+        dropdown();
+        navopener();
+        carousel();
+    });
 
 })(jQuery);

@@ -1,0 +1,339 @@
+.main-nav {
+    @extend %clearfix;
+    max-width: 1200px;
+    padding: 0 15px;
+    margin: 0 auto;
+    padding-top: 15px;
+    position: relative;
+    @include media('<tablet') {
+        padding: 10px 15px;
+    }
+}
+
+.logo {
+    @include animate (opacity);
+    display: block;
+    margin-top: 7px;
+    float: left;
+    &:hover {
+        opacity: .5;
+    }
+    @include media('<phone') {
+        width: 111px;
+        margin: 0;
+    }
+}
+
+.triangle {
+    display: inline-block;
+    @include triangle(12px, $black, down);
+}
+
+.dropdown,
+.has-drop {
+    position: relative;
+    >a {
+        text-decoration: none;
+    }
+    .dropdown-list {
+        padding: 10px;
+    }
+    &.opened {
+        margin-bottom: 0;
+        .dropdown-list {
+            display: block;
+        }
+        @include media('<tablet') {
+            &:after {
+                display: none;
+            }
+        }
+        &:after {
+            content: "";
+            position: absolute;
+            line-height: 1;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            @include triangle(14px 10px, $black, up);
+        }
+    }
+    .triangle {
+        @include media('<tablet') {
+            display: none;
+        }
+    }
+}
+
+.dropdown {
+    @include media('<tablet') {
+        &:before {
+            content: "\e900";
+            font-family: "icomoon";
+            display: block;
+            position: absolute;
+            right: 0;
+            top: 16px;
+            color: $white;
+            font-size: 13px;
+        }
+    }
+    .triangle {
+        margin-left: 5px;
+    }
+    &.opened {
+        @include media('<tablet') {
+            a {
+                border-bottom: 0;
+            }
+            &:before {
+                transform: rotate(90deg);
+            }
+        }
+    }
+    .dropdown-list {
+        padding: 18px;
+        min-width: 210px;
+        @include media('<tablet') {
+            min-width: auto;
+            padding: 7px 10px 16px 24px;
+            border-bottom: 1px solid $white;
+        }
+    }
+}
+
+.dropdown-list {
+    @extend %listreset;
+    @extend %clearfix;
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 50%;
+    left: auto;
+    transform: translateX(50%);
+    display: none;
+    font-weight: 300;
+    background: $black;
+    @include media('<tablet') {
+        position: relative;
+        font-size: 13px;
+    }
+    li {
+        width: 100%;
+        a {
+            display: inline-block;
+            padding: 5px 10px;
+            width: 100%;
+            font-size: 14px;
+            color: $white;
+        }
+    }
+}
+
+.has-drop {
+    padding: 11px 0 9px;
+    cursor: pointer;
+    line-height: 18px;
+    margin-left: 38px;
+    @include media('<desktop') {
+        margin-left: 15px;
+    }
+    @include media('<tablet') {
+        order: -1;
+        margin-left: 0;
+        margin-bottom: 0 !important;
+        padding: 0;
+        .dropdown-list {
+            display: flex;
+            justify-content: flex-end;
+            padding: 0;
+            margin-right: -5px;
+            li {
+                width: auto;
+                float: left;
+            }
+            a {
+                font-size: 16px;
+            }
+        }
+    }
+    &:hover {
+        text-shadow: 1px 1px 1px $black;
+    }
+    span {
+        line-height: 1;
+        @include media('<tablet') {
+            display: none;
+        }
+    }
+    .triangle {
+        margin-bottom: 3px;
+    }
+    &.opened {
+        .dropdown-list {
+            display: block;
+        }
+    }
+}
+
+.lang {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.lang-list {
+    .current-lang {
+        @include media('<tablet') {
+            text-decoration: underline;
+        }
+    }
+}
+
+.nav-list {
+    @extend %listreset;
+    float: right;
+    display: flex;
+    position: relative;
+    z-index: 1;
+    @include media('<tablet') {
+        @include animate (right);
+        flex-direction: column;
+        justify-content: flex-start;
+        position: absolute;
+        padding: 5px 20px 10px;
+        width: 56%;
+        height: 100vh;
+        right: -56%;
+        left: auto;
+        top: 0;
+        bottom: 0;
+        background: $black;
+        overflow: auto;
+        .nav-open & {
+            right: 0;
+        }
+    }
+    >li {
+        display: inline-block;
+        @include media('<tablet') {
+            width: 100%;
+        }
+        >a {
+            display: inline-block;
+            font-size: 16px;
+            font-weight: 300;
+            padding: 10px 22px;
+            position: relative;
+            @include media('<desktop') {
+                padding: 10px 12px;
+            }
+            @include media('<tablet') {
+                padding: 16px 8px 4px;
+                color: $white;
+                border-bottom: 1px solid $white;
+                width: 100%;
+            }
+            &:hover {
+                text-decoration: none;
+                text-shadow: 1px 1px 1px $black;
+            }
+        }
+        &.active {
+            a:before {
+                content: "";
+                position: absolute;
+                left: 0;
+                width: 100%;
+                bottom: 5px;
+                height: 1px;
+                background: $black;
+            }
+        }
+    }
+}
+
+.nav-opener {
+    display: none;
+    cursor: pointer;
+    width: 23px;
+    height: 13px;
+    margin-top: 11px;
+    position: relative;
+    @include media('<tablet') {
+        display: block;
+        float: right;
+    }
+    @include media('<phone') {
+        margin: 0;
+    }
+    .symbol:before {
+        @include animate(box-shadow transform);
+        transform: translate(0deg);
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 23px;
+        height: 3px;
+        margin-top: -1px;
+        background-color: $black;
+        box-shadow: 0px 5px 0px 0px $black, 0px -5px 0px 0px $black;
+    }
+    .symbol:after {
+        @include animate(box-shadow transform);
+        transform: translate(0deg);
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 23px;
+        height: 3px;
+        margin-top: -1px;
+        background-color: $black;
+    }
+
+    .nav-open & .symbol:before {
+        box-shadow: none;
+        transform: rotate(45deg);
+    }
+    .nav-open & .symbol:after {
+        transform: rotate(-45deg);
+    }
+    .nav-open & {
+        display: none;
+    }
+}
+
+.nav-close {
+    @include animate (opacity);
+    position: absolute;
+    display: none;
+    left: 5px;
+    top: 5px;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    @include media('<tablet') {
+        display: block;
+    }
+    .symbol:before {
+        transform: translate(0deg);
+        transform: rotate(-45deg);
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 25px;
+        height: 1px;
+        margin-top: -1px;
+        background-color: $white;
+    }
+    .symbol:after {
+        transform: translate(0deg);
+        transform: rotate(45deg);
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 25px;
+        height: 1px;
+        margin-top: -1px;
+        background-color: $white;
+    }
+}

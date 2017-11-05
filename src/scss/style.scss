@@ -14,8 +14,12 @@
 //* Layout modules *//
 @import 'layout/main';
 
-//* Pages modules *//
-@import 'pages/main';
-
 //* Components *//
-@import 'components/starter-box';
+@import 'components/nav';
+@import 'components/common';
+@import 'components/carousel';
+@import 'components/quantity';
+@import 'components/socials';
+@import 'components/blog';
+@import 'components/pagination';
+

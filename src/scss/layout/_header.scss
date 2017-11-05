@@ -1,0 +1,14 @@
+#header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1002;
+    .blog &,
+    .text-page & {
+        position: static;
+        margin-bottom: 54px;
+        @include media('<tablet') {
+            margin-bottom: 30px;
+        }
+    }
+}

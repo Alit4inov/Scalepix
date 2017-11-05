@@ -1,0 +1,64 @@
+.quantity-container {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+}
+
+.quantity-holder {
+    position: absolute;
+    width: 60px;
+    height: 70px;
+    right: 70px;
+    top: -35px;
+    padding: 15px 0 15px 15px;
+    background-color: $black;
+    z-index: 1;
+    @include media('<tablet') {
+        right: 60px;
+    }
+    @include media('<phone') {
+        top: -26px;
+        padding: 10px 0 10px 10px;
+        width: 40px;
+        height: 52px;
+    }
+    span {
+        display: inline-block;
+        color: $white;
+        line-height: 1;
+        font-size: 16px;
+        font-weight: 300;
+        @include media('<tablet') {
+            font-size: 15px;
+        }
+        @include media('<phone') {
+            font-size: 12px;
+        }
+    }
+    .data-holder {
+        position: relative;
+    }
+    .quantity-top {
+        position: absolute;
+        left: 20px;
+        top: 15px;
+        @include media('<phone') {
+            left: 10px;
+            top: 10px;
+        }
+    }
+    .quantity-bottom {
+        position: absolute;
+        right: 0;
+        bottom: 15px;
+        @include media('<phone') {
+            bottom: 10px;
+        }
+    }
+    @include media('<xs-phone') {
+        display: none;
+    }
+}

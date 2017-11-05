@@ -1,0 +1,42 @@
+.pagination {
+    @extend %listreset;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    li {
+        display: inline-block;
+        width: 28px;
+        height: 28px;
+        a {
+            @include animate (color background-color);
+            display: inline-block;
+            width: 100%;
+            line-height: 28px;
+            text-align: center;
+            font-size: 18px;
+            &:hover {
+                background-color: $black;
+                color: $white;
+                text-decoration: none;
+            }
+        }
+    }
+    .dots {
+        font-size: 0;
+        &:after {
+            display: inline-block;
+            content: ".....";
+            font-size: 18px;
+            line-height: 28px;
+            letter-spacing: -0.3px;
+        }
+    }
+    .current {
+        background-color: $black;
+        color: $white;
+        &:hover {
+            background-color: $black;
+            color: $white;
+        }
+    }
+}
